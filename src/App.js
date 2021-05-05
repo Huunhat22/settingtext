@@ -1,37 +1,38 @@
 import { Component } from 'react';
 import './App.css';
+import Reset from './components/Reset';
+import Colorpicker from './components/Colorpicker';
+import Result from './components/Result';
+import Sizesetting from './components/Sizesetting';
 
 class App extends Component {
+
+  //Tạo State để truyền vào component
+  constructor(props){
+    super(props);
+    this.state = {
+      color : 'red',
+      fontsize : 15
+    };
+  }
+
+  onSetColor = (param) =>{
+    // console.log(param);
+    this.setState({
+      color : param
+    });
+  }
+
   render(){
     return (
       <div className='container'>
           <div className='row mt-5'>
+            <Colorpicker colorRecive = {this.state.color} onReciveColor = {this.onSetColor}></Colorpicker>
             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-              <div className="card mb-3">
-                <div className="card-header">
-                  <h3>Color Picker</h3>
-                </div>
-                <div className="card-body">
-  
-                </div>
-              </div>
+              <Sizesetting></Sizesetting>
+              <Reset></Reset>
             </div>
-            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-              <div className="card mb-3">
-                <div className="card-header">
-                  <h3>Size : 15px</h3>
-                </div>
-                <div className="card-body">
-                  <button type="button" className="btn btn-success" >Giảm</button>&nbsp;
-                  <button type="button" className="btn btn-success" >Tăng</button>
-                </div>
-              </div>
-              <button type="button" className="btn btn-primary" >reset</button>
-            </div>
-            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <p>Color : red - Fontsize : 15px</p>
-              <p className="border border-danger p-2">đây là nội dung sẽ bị thay đổi</p>
-            </div>
+            <Result colorRecive = {this.state.color}></Result>
           </div>
         </div>
     );
