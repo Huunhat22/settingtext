@@ -4,6 +4,7 @@ import Reset from './components/Reset';
 import Colorpicker from './components/Colorpicker';
 import Result from './components/Result';
 import Sizesetting from './components/Sizesetting';
+import From from './components/From';
 
 class App extends Component {
 
@@ -53,6 +54,7 @@ class App extends Component {
             </div>
             <Result colorRecive = {this.state.color} fontSize = {this.state.fontsize}></Result>
           </div>
+          <From></From>
         </div>
     );
   }
